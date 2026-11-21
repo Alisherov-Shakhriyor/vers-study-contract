@@ -67,7 +67,18 @@ const TelegramClient = {
         };
       }
 
-      const resData = await response.json();
+      let resData;
+      const responseText = await response.text();
+      try {
+        resData = JSON.parse(responseText);
+      } catch (parseErr) {
+        return {
+          success: false,
+          error: response.status === 413 
+            ? "Hujjat hajmi server limitidan oshib ketdi (413 Payload Too Large)." 
+            : `Server xatoligi (${response.status}): ${responseText.slice(0, 100)}`
+        };
+      }
 
       if (!response.ok || !resData.success) {
         return {

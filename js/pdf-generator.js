@@ -29,9 +29,9 @@ const ContractPdfGenerator = {
       const opt = {
         margin: [12, 12, 14, 12], // mm [top, left, bottom, right]
         filename: filename,
-        image: { type: 'jpeg', quality: 0.98 },
+        image: { type: 'jpeg', quality: 0.88 },
         html2canvas: {
-          scale: 2, // 2x Retina quality crisp text
+          scale: 1.5, // Crisp high-definition text optimized for fast mobile generation & delivery
           useCORS: true,
           letterRendering: true,
           logging: false,
