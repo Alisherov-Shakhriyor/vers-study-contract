@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Shartnoma Generatori — VERS STUDY</title>
+  
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/generator.css">
+  <link rel="stylesheet" href="css/contract.css">
+  <link rel="stylesheet" href="css/signature.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="app-navbar">
+    <div class="container navbar-inner">
+      <div class="brand-logo-wrap">
+        <img src="assets/logo.svg" alt="VERS STUDY Logo" class="brand-logo-img">
+      </div>
+      <span class="nav-badge">Admin URL Generator</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Hero Banner -->
+    <section class="admin-header-hero">
+      <div class="hero-pill">⚡ Tezkor & Xavfsiz Shartnoma Tizimi</div>
+      <h1 class="hero-title">Shaxsiy Shartnoma Havolasini Yaratish</h1>
+      <p class="hero-subtitle">
+        Mijoz ma'lumotlarini kiriting va unga imzolash uchun tayyor shaxsiy havola (URL) oling. Mijoz havolani ochadi, imzolaydi va PDF avtomatik Telegramingizga keladi.
+      </p>
+
+      <!-- Quick Fill Buttons -->
+      <div class="quick-fill-bar">
+        <span class="quick-fill-label">Demo ma'lumotlar bilan to'ldirish:</span>
+        <button type="button" class="btn-tag" id="btnQuickFillAdult">👤 Voyaga yetgan (Adult) Demo</button>
+        <button type="button" class="btn-tag" id="btnQuickFillMinor">👶 Voyaga yetmagan (Minor) Demo</button>
+      </div>
+    </section>
+
+    <!-- Generator Form Card -->
+    <section class="generator-form-card">
+      <form id="contractGeneratorForm" novalidate>
+
+        <!-- 1. Shartnoma ma'lumotlari -->
+        <div class="form-section-block">
+          <div class="section-legend">
+            <span class="legend-number">1</span>
+            <h2 class="legend-title">Shartnoma ma'lumotlari</h2>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="contractNumber">
+                Shartnoma raqami <span class="required-star">*</span>
+              </label>
+              <input type="text" id="contractNumber" name="contractNumber" class="form-input" value="VS-2026-001" required>
+              <span class="form-hint">Standart format: VS-YYYY-NNN</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contractDate">
+                Tuzilgan sana <span class="required-star">*</span>
+              </label>
+              <input type="date" id="contractDate" name="contractDate" class="form-input" required>
+            </div>
+
+            <div class="form-group col-span-2">
+              <label class="form-label" for="adminFullName">
+                Ijrochi (Admin) vakili F.I.Sh. <span class="required-star">*</span>
+              </label>
+              <input type="text" id="adminFullName" name="adminFullName" class="form-input" value="Xalilov Jasur Bahodirovich" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Mijoz ma'lumotlari -->
+        <div class="form-section-block">
+          <div class="section-legend">
+            <span class="legend-number">2</span>
+            <h2 class="legend-title">Mijoz (Buyurtmachi) ma'lumotlari</h2>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group col-span-2">
+              <label class="form-label" for="customerType">
+                Mijoz toifasi <span class="required-star">*</span>
+              </label>
+              <select id="customerType" name="customerType" class="form-select">
+                <option value="adult">Voyaga yetgan shaxs (O‘zi o‘qiydi va o‘zi to‘laydi)</option>
+                <option value="minor">Voyaga yetmagan o‘quvchi (Ota-onasi yoki qonuniy vakili nomidan)</option>
+              </select>
+            </div>
+
+            <div class="form-group col-span-2">
+              <label class="form-label" for="customerFullName">
+                Buyurtmachi (To‘lovchi / Imzolovchi) to‘liq F.I.Sh. <span class="required-star">*</span>
+              </label>
+              <input type="text" id="customerFullName" name="customerFullName" class="form-input" placeholder="Masalan: Alisherov Shaxriyor Baxtiyorovich" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="birthDate">Tug‘ilgan sana</label>
+              <input type="date" id="birthDate" name="birthDate" class="form-input" value="2000-01-01">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="customerPhone">Telefon raqami <span class="required-star">*</span></label>
+              <input type="tel" id="customerPhone" name="customerPhone" class="form-input" placeholder="+998 (90) 123-45-67" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="passportDetails">Pasport / ID seriya va raqam</label>
+              <input type="text" id="passportDetails" name="passportDetails" class="form-input" placeholder="AA 1234567">
+              <span class="form-hint">Eslatma: Demo havolaga faqat ixtiyoriy demo qiymatlar kiritiladi</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="customerAddress">Yashash manzili</label>
+              <input type="text" id="customerAddress" name="customerAddress" class="form-input" value="Toshkent shahri">
+            </div>
+          </div>
+
+          <!-- Voyaga yetmagan o'quvchi bloki (Minor) -->
+          <div id="minorFieldsSection" class="minor-box" style="display: none;">
+            <div class="minor-box-title">
+              <span>👶</span> Voyaga yetmagan o‘quvchi va uning qonuniy vakili ma'lumotlari
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="studentFullName">O‘quvchining F.I.Sh.</label>
+                <input type="text" id="studentFullName" name="studentFullName" class="form-input" placeholder="Masalan: Karimova Madina">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="studentBirthDate">O‘quvchining tug‘ilgan sanasi</label>
+                <input type="date" id="studentBirthDate" name="studentBirthDate" class="form-input" value="2012-05-10">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="guardianRelation">Qarindoshlik / Vakillik asosi</label>
+                <input type="text" id="guardianRelation" name="guardianRelation" class="form-input" value="Otasi (Qonuniy vakili)">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="guardianPhone">Vakil telefon raqami</label>
+                <input type="tel" id="guardianPhone" name="guardianPhone" class="form-input" placeholder="+998 (90) 000-00-00">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Kurs va ta'lim ma'lumotlari -->
+        <div class="form-section-block">
+          <div class="section-legend">
+            <span class="legend-number">3</span>
+            <h2 class="legend-title">Kurs va ta'lim shartlari</h2>
+          </div>
+
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label class="form-label" for="courseName">Kurs yo‘nalishi <span class="required-star">*</span></label>
+              <select id="courseName" name="courseName" class="form-select">
+                <option value="General English" selected>General English</option>
+                <option value="IELTS Intensive">IELTS Intensive</option>
+                <option value="Business English">Business English</option>
+                <option value="Kids English">Kids English</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="courseLevel">Boshlang‘ich daraja <span class="required-star">*</span></label>
+              <select id="courseLevel" name="courseLevel" class="form-select">
+                <option value="Beginner">Beginner (A1)</option>
+                <option value="Elementary" selected>Elementary (A2)</option>
+                <option value="Pre-Intermediate">Pre-Intermediate (B1)</option>
+                <option value="Intermediate">Intermediate (B1+)</option>
+                <option value="Upper-Intermediate">Upper-Intermediate (B2)</option>
+                <option value="Advanced">Advanced (C1)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="educationFormat">Ta'lim shakli</label>
+              <select id="educationFormat" name="educationFormat" class="form-select">
+                <option value="Offline" selected>Offline (O‘quv markazida)</option>
+                <option value="Online">Online (Masofaviy)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="courseDuration">Davomiyligi</label>
+              <input type="text" id="courseDuration" name="courseDuration" class="form-input" value="3 oy">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="totalLessons">Jami darslar soni</label>
+              <input type="number" id="totalLessons" name="totalLessons" class="form-input" value="36" min="1">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="weeklyLessons">Haftalik mashg‘ulotlar</label>
+              <input type="number" id="weeklyLessons" name="weeklyLessons" class="form-input" value="3" min="1" max="7">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="courseStartDate">Kurs boshlanish sanasi</label>
+              <input type="date" id="courseStartDate" name="courseStartDate" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="courseEndDate">Kurs yakunlanish sanasi</label>
+              <input type="date" id="courseEndDate" name="courseEndDate" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="lessonDuration">Bir dars vaqti (daqiqa)</label>
+              <input type="number" id="lessonDuration" name="lessonDuration" class="form-input" value="90">
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. To'lov shartlari -->
+        <div class="form-section-block">
+          <div class="section-legend">
+            <span class="legend-number">4</span>
+            <h2 class="legend-title">Narx va to‘lov shartlari</h2>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="totalAmount">
+                Jami shartnoma qiymati (so‘m) <span class="required-star">*</span>
+              </label>
+              <input type="number" id="totalAmount" name="totalAmount" class="form-input" value="3600000" min="100000" step="50000" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="paymentType">To‘lov shakli <span class="required-star">*</span></label>
+              <select id="paymentType" name="paymentType" class="form-select">
+                <option value="monthly" selected>Oylik to‘lov (Har oy bo‘lib to‘lash)</option>
+                <option value="full">To‘liq oldindan to‘lov (100% avans)</option>
+              </select>
+              <span id="monthlyCalcHint" class="form-hint hint-highlight"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons Footer -->
+        <div class="form-actions-footer">
+          <button type="button" class="btn btn-ghost" id="btnResetForm">
+            Formani tozalash
+          </button>
+          
+          <div class="action-buttons-group">
+            <button type="button" class="btn btn-secondary" id="btnPreviewContract">
+              <span>👁️</span> Shartnomani ko‘rish
+            </button>
+            <button type="submit" class="btn btn-primary" id="btnGenerateUrl">
+              <span>🔗</span> URL yaratish
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- Generated URL Result Area -->
+    <section class="generated-url-card" id="generatedUrlSection">
+      <div class="url-card-header">
+        <span class="url-badge">Tayyor</span>
+        <h2 class="url-card-title">Mijoz uchun shaxsiy havola yaratildi!</h2>
+      </div>
+      <p class="url-card-desc">
+        Ushbu havolani nusxalang va mijozga (Telegram, SMS yoki messenjer orqali) yuboring. Mijoz uni ochganda shartnoma to'liq uning ma'lumotlari bilan chiqadi va elektron qo'l imzosini chizishi mumkin bo'ladi.
+      </p>
+
+      <div class="url-input-wrap">
+        <input type="text" id="generatedUrlInput" class="url-display-input" readonly>
+        <button type="button" class="btn btn-primary" id="btnCopyUrl">
+          <span>📋</span> Nusxalash
+        </button>
+        <button type="button" class="btn btn-secondary" id="btnOpenUrl">
+          <span>↗</span> Ochish
+        </button>
+      </div>
+
+      <div class="url-instructions">
+        💡 <em>Mijoz imzolaganidan so'ng, uning imzosi qo'yilgan A4 PDF hujjati avtomatik tarzda Telegram botingizga yuboriladi.</em>
+      </div>
+    </section>
+  </main>
+
+  <!-- Contract Preview Modal -->
+  <div class="modal-overlay" id="previewModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Shartnomani oldindan ko‘rish</h3>
+        <button type="button" class="btn-ghost" id="btnClosePreview" style="font-size: 20px; cursor: pointer;">✕</button>
+      </div>
+      <div class="modal-body" id="previewContainer">
+        <!-- Rendered Contract Injects Here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('btnClosePreview').click()">Yopish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="templates/contract-001.js"></script>
+  <script src="js/validator.js"></script>
+  <script src="js/encoder.js"></script>
+  <script src="js/generator.js"></script>
+
+</body>
+</html>

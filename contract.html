@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ta'lim xizmatlarini ko‘rsatish shartnomasi — VERS STUDY</title>
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/contract.css">
+  <link rel="stylesheet" href="css/signature.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <!-- html2pdf.js for Client-Side Multi-Page A4 PDF Generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-track">
+    <div class="reading-progress-fill" id="readingProgressBar"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="app-navbar">
+    <div class="container navbar-inner">
+      <div class="brand-logo-wrap">
+        <img src="assets/logo.svg" alt="VERS STUDY Logo" class="brand-logo-img">
+      </div>
+      <div class="nav-badge" style="background-color: #ECFDF5; color: #065F46;">
+        🔒 Rasmiy Elektron Shartnoma
+      </div>
+    </div>
+  </header>
+
+  <!-- Loading State -->
+  <div id="loadingState" style="text-align: center; padding: 100px 20px;">
+    <div class="spinner" style="margin: 0 auto 20px; border-top-color: var(--accent-color);"></div>
+    <h3 style="font-size: 18px; color: var(--primary-color);">Shartnoma ma'lumotlari yuklanmoqda...</h3>
+    <p style="color: var(--text-muted); font-size: 14px; margin-top: 6px;">Iltimos, kuting.</p>
+  </div>
+
+  <!-- Error State -->
+  <div id="errorState" class="container" style="display: none; padding: 60px 20px; max-width: 600px;">
+    <div class="status-alert status-danger">
+      <div class="status-icon">⚠️</div>
+      <div class="status-text">
+        <strong id="errorTitle" style="font-size: 16px;">Xatolik</strong>
+        <p id="errorMessage" style="margin-top: 6px;"></p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="index.html" class="btn btn-primary">Bosh sahifaga qaytish</a>
+    </div>
+  </div>
+
+  <!-- Main Contract Content Wrapper -->
+  <div id="mainContent" style="display: none;">
+    <main class="contract-view-wrapper">
+      
+      <!-- Contract Render Target Container -->
+      <div id="contractRenderArea">
+        <!-- Rendered by ContractTemplate -->
+      </div>
+
+    </main>
+
+    <!-- Floating Action Button for Easy Mobile Signing -->
+    <div class="floating-action-bar" id="floatingActionBar">
+      <button type="button" class="btn-sign-now" id="btnFloatingSign">
+        <span>✍️</span> Shartnomani imzolash
+      </button>
+    </div>
+  </div>
+
+  <!-- Final Confirmation / Success Screen -->
+  <div id="successScreen" class="container" style="display: none; padding: 50px 20px 80px; max-width: 720px;">
+    <div style="background: #FFFFFF; border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color); text-align: center;">
+      <div style="width: 72px; height: 72px; border-radius: 50%; background: #ECFDF5; color: #10B981; font-size: 36px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);">
+        ✓
+      </div>
+
+      <h1 style="font-size: 26px; font-weight: 800; color: var(--primary-color); margin-bottom: 10px;">
+        Shartnoma muvaffaqiyatli imzolandi!
+      </h1>
+      <p style="font-size: 15.5px; color: var(--text-muted); max-width: 500px; margin: 0 auto 26px;">
+        Shartnoma hujjatingiz to'liq rasmiylashtirildi. Uni istalgan vaqt PDF formatida yuklab olishingiz mumkin.
+      </p>
+
+      <!-- Shartnoma xulosasi -->
+      <div style="background-color: #FAFAFC; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; text-align: left; margin-bottom: 24px; font-size: 14.5px;">
+        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #ECE8F7;">
+          <span style="color: var(--text-muted);">Shartnoma raqami:</span>
+          <strong id="resContractNo" style="font-family: monospace; color: var(--accent-color); font-size: 15px;">—</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #ECE8F7;">
+          <span style="color: var(--text-muted);">Buyurtmachi:</span>
+          <strong id="resCustomerName">—</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #ECE8F7;">
+          <span style="color: var(--text-muted);">Shartnoma sanasi:</span>
+          <span id="resContractDate">—</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 6px 0;">
+          <span style="color: var(--text-muted);">Imzolangan vaqt:</span>
+          <strong id="resSignedTime" style="color: #059669;">—</strong>
+        </div>
+      </div>
+
+      <!-- Telegram Delivery Alert Box -->
+      <div id="telegramStatusBox" class="status-alert status-success" style="text-align: left;">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px;">
+        <button type="button" class="btn btn-primary" id="btnDownloadFinalPdf" style="padding: 14px 28px; font-size: 16px;">
+          <span>📥</span> PDF formatida yuklab olish
+        </button>
+      </div>
+
+      <div style="margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border-color); font-size: 13px; color: var(--text-light);">
+        VERS STUDY — Ta'lim xizmatlarini ko'rsatish shartnomasi onlayn tizimi
+      </div>
+    </div>
+  </div>
+
+  <!-- Signature Modal -->
+  <div class="modal-overlay" id="signatureModal">
+    <div class="signature-modal-dialog">
+      <div class="sig-modal-header">
+        <h3 class="sig-modal-title">
+          <span>✍️</span> Elektron qo‘l imzoingizni chizing
+        </h3>
+        <button type="button" class="btn-ghost" id="btnCloseSigModal" style="font-size: 20px; cursor: pointer;">✕</button>
+      </div>
+
+      <div class="sig-modal-body">
+        <p class="sig-instructions">
+          Quyidagi oq maydonga barmoq yoki stilus yordamida shaxsiy imzoingizni qoldiring:
+        </p>
+
+        <!-- Canvas Holder with Touch Optimization -->
+        <div class="canvas-holder">
+          <canvas id="signatureCanvas"></canvas>
+          <div class="canvas-watermark">
+            Bu yerga imzoingizni chizing
+          </div>
+        </div>
+
+        <div class="sig-pen-indicator">
+          <div><span class="pen-color-dot"></span> Ruchka rangi: To‘q ko‘k (Siyoh)</div>
+          <button type="button" class="btn-ghost" id="btnClearSig" style="color: var(--accent-color); font-weight: 700; font-size: 12.5px; padding: 4px 8px;">
+            ↺ Imzoni tozalash
+          </button>
+        </div>
+
+        <div class="sig-legal-disclaimer">
+          ⚠️ <strong>Yuridik eslatma:</strong> Ushbu chizilgan imzo platforma doirasida shartnoma bilan tanishganlik va uni qabul qilganlikni ifodalovchi vizual elektron imzo hisoblanadi.
+        </div>
+      </div>
+
+      <div class="sig-modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="window.ContractApp && window.ContractApp.closeSignatureModal()">
+          Bekor qilish
+        </button>
+        <button type="button" class="btn btn-primary" id="btnConfirmSig">
+          <span>✓</span> Imzoni tasdiqlash
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Processing Modal (PDF & Telegram delivery) -->
+  <div class="processing-overlay" id="processingModal">
+    <div class="spinner"></div>
+    <div class="proc-title">Shartnoma rasmiylashtirilmoqda...</div>
+    <div class="proc-status-text" id="procStatusText">Iltimos, kutib turing...</div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="templates/contract-001.js"></script>
+  <script src="js/validator.js"></script>
+  <script src="js/decoder.js"></script>
+  <script src="js/signature.js"></script>
+  <script src="js/pdf-generator.js"></script>
+  <script src="js/telegram-client.js"></script>
+  <script src="js/renderer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 130" width="320" height="130" fill="none">
+  <!-- Official Stamp Circle (Blue ink) -->
+  <g opacity="0.82" transform="translate(18, 5)">
+    <circle cx="60" cy="60" r="54" stroke="#1E40AF" stroke-width="2.5" stroke-dasharray="7 2"/>
+    <circle cx="60" cy="60" r="47" stroke="#1E40AF" stroke-width="1.2"/>
+    <circle cx="60" cy="60" r="32" stroke="#1E40AF" stroke-width="1"/>
+    
+    <path id="stampPathUpper" d="M 18,60 A 42,42 0 0,1 102,60" fill="none"/>
+    <path id="stampPathLower" d="M 102,60 A 42,42 0 0,1 18,60" fill="none"/>
+    
+    <text font-family="'Segoe UI', Roboto, sans-serif" font-size="7.5" font-weight="bold" fill="#1E40AF" letter-spacing="1.2">
+      <textPath href="#stampPathUpper" startOffset="50%" text-anchor="middle">VERS STUDY EDUCATION</textPath>
+    </text>
+    <text font-family="'Segoe UI', Roboto, sans-serif" font-size="6.8" font-weight="bold" fill="#1E40AF" letter-spacing="1">
+      <textPath href="#stampPathLower" startOffset="50%" text-anchor="middle">★ TOSHKENT SHAHRI ★</textPath>
+    </text>
+    
+    <text x="60" y="58" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="900" fill="#1E40AF" text-anchor="middle">TASDIQLANDI</text>
+    <text x="60" y="69" font-family="'Segoe UI', sans-serif" font-size="7" font-weight="600" fill="#1E40AF" text-anchor="middle">2026</text>
+    <polygon points="60,38 62,43 67,43 63,46 65,51 60,48 55,51 57,46 53,43 58,43" fill="#1E40AF"/>
+  </g>
+
+  <!-- Director Handwritten Signature (Natural dark blue pen strokes) -->
+  <g stroke="#0F2B66" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Initial stroke & loop -->
+    <path d="M 65 85 C 80 50, 95 30, 105 38 C 112 45, 95 95, 115 88 C 130 82, 140 45, 148 52 C 154 57, 138 90, 155 82"/>
+    <!-- Middle rhythm waves -->
+    <path d="M 155 82 C 165 72, 172 74, 180 84 C 188 72, 195 73, 203 83 C 210 70, 218 71, 226 81"/>
+    <!-- Elegant upward flourish and loop -->
+    <path d="M 226 81 C 240 65, 258 40, 268 45 C 278 52, 260 88, 280 84 C 295 80, 308 68, 312 62"/>
+    <!-- Dynamic underline swoop -->
+    <path d="M 85 96 C 130 92, 210 90, 290 85 C 305 84, 270 98, 220 102 C 170 106, 120 104, 98 102" stroke-width="2.1"/>
+    <path d="M 270 78 L 273 72"/>
+    <path d="M 285 75 L 288 69"/>
+  </g>
+</svg>

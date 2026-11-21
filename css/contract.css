@@ -1,0 +1,461 @@
+/* ==========================================================================
+   VERS STUDY — CONTRACT DOCUMENT STYLES (A4 Document Format)
+   ========================================================================== */
+
+/* Reading progress bar */
+.reading-progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: transparent;
+  z-index: 1000;
+}
+
+.reading-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-color), #A855F7);
+  transition: width 0.1s ease-out;
+}
+
+/* Document Container */
+.contract-view-wrapper {
+  max-width: 860px;
+  margin: 36px auto 60px;
+  padding: 0 16px;
+}
+
+.contract-doc {
+  background: #FFFFFF;
+  color: #111114;
+  padding: 50px 54px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E8E5EE;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.68;
+  font-size: 14.5px;
+}
+
+/* Header */
+.doc-header {
+  border-bottom: 2px solid #111114;
+  padding-bottom: 24px;
+  margin-bottom: 28px;
+}
+
+.doc-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand-badge {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  color: #111114;
+  line-height: 1.1;
+}
+
+.brand-sub {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--accent-color);
+}
+
+.doc-meta {
+  text-align: right;
+  font-size: 13.5px;
+  color: #33313B;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.highlight-val {
+  font-family: monospace;
+  font-weight: 700;
+  color: var(--accent-color);
+  font-size: 14.5px;
+}
+
+.doc-title {
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  color: #111114;
+  letter-spacing: 0.5px;
+  margin: 18px 0 14px;
+  text-transform: uppercase;
+}
+
+.doc-intro {
+  font-size: 14.5px;
+  text-align: justify;
+  color: #22202A;
+  margin-top: 12px;
+}
+
+/* Section styling */
+.doc-section {
+  margin-bottom: 26px;
+  page-break-inside: auto;
+}
+
+.section-title {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #111114;
+  margin: 22px 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-left: 3.5px solid var(--accent-color);
+  padding-left: 10px;
+}
+
+.doc-section p {
+  margin-bottom: 11px;
+  text-align: justify;
+  color: #24222D;
+}
+
+.doc-list, .doc-ol {
+  margin: 10px 0 14px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.doc-list li, .doc-ol li {
+  color: #24222D;
+}
+
+.doc-list-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 16px;
+  margin: 12px 0 16px 8px;
+}
+
+.table-wrap {
+  margin: 14px 0 18px;
+  overflow-x: auto;
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.doc-table td {
+  padding: 8px 12px;
+  border: 1px solid #DFDCED;
+}
+
+.doc-table tr:nth-child(odd) {
+  background-color: #FAF9FD;
+}
+
+/* Payment & Formula boxes */
+.payment-highlight-box {
+  background-color: #F6F4FF;
+  border: 1.5px solid #D5CEFD;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin: 10px 0 14px;
+  font-size: 14px;
+}
+
+.formula-box {
+  background-color: #F9FAFB;
+  border-left: 3.5px solid #10B981;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 12px 0 14px;
+  font-size: 13.5px;
+}
+
+.formula-box code {
+  display: block;
+  font-family: monospace;
+  font-weight: 700;
+  color: #065F46;
+  margin: 6px 0;
+  font-size: 13.5px;
+}
+
+.calc-example {
+  background-color: #FAF9FE;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #ECE7FA;
+  font-size: 13.5px;
+}
+
+.legal-notice-box {
+  font-size: 12.5px;
+  color: #6C667E;
+  margin: 18px 0;
+  padding: 10px 14px;
+  background-color: #F7F6FB;
+  border-radius: 6px;
+  border-left: 3px solid #8B5CF6;
+}
+
+/* Parties & Signatures */
+.sub-heading {
+  font-size: 16px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 18px;
+  color: #111114;
+}
+
+.parties-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 18px;
+  page-break-inside: avoid;
+}
+
+.party-card {
+  border: 1.5px solid #DFDBEC;
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+}
+
+.party-role {
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid #ECE8F7;
+}
+
+.party-info {
+  font-size: 13px;
+  color: #2F2D38;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+
+.minor-info-block {
+  background-color: #FAF9FE;
+  border: 1px dashed #C8BFF7;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.minor-tag {
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 2px;
+}
+
+/* Signature boxes */
+.signature-box-container {
+  margin-top: auto;
+  border-top: 1px dashed #D0CBE3;
+  padding-top: 12px;
+}
+
+.sig-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #494557;
+  margin-bottom: 6px;
+}
+
+.admin-sig-wrapper {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FAF9FD;
+  border-radius: 6px;
+  border: 1px solid #ECE8F7;
+  overflow: hidden;
+}
+
+.admin-sig-img {
+  max-height: 84px;
+  width: auto;
+  object-fit: contain;
+}
+
+.customer-sig-wrapper {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FAF9FD;
+  border-radius: 6px;
+  border: 1.5px dashed #C8BFF7;
+  position: relative;
+  overflow: hidden;
+}
+
+.customer-sig-img {
+  max-height: 84px;
+  max-width: 90%;
+  object-fit: contain;
+}
+
+.sig-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px;
+  font-size: 12px;
+  color: #79738B;
+}
+
+.sig-icon {
+  font-size: 22px;
+}
+
+.btn-sign-inline {
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 16px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(108, 77, 255, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-sign-inline:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.sig-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 6px;
+  color: #059669;
+}
+
+.signed-timestamp {
+  font-size: 11.5px;
+  color: #4E4A5C;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.doc-conclusion {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1.5px solid #111114;
+  font-size: 13px;
+  text-align: center;
+}
+
+.conclusion-heading {
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.brand-motto {
+  font-weight: 800;
+  color: var(--accent-color);
+  letter-spacing: 1.5px;
+  margin-top: 8px;
+  font-size: 13.5px;
+}
+
+/* Floating Sign Button (Bottom on mobile & desktop) */
+.floating-action-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  background-color: rgba(17, 17, 20, 0.94);
+  backdrop-filter: blur(10px);
+  padding: 10px 18px;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.floating-action-bar .btn-sign-now {
+  background: linear-gradient(135deg, #7C5CFC, #4F2CF5);
+  color: #FFFFFF;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(108, 77, 255, 0.5);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.floating-action-bar .btn-sign-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(108, 77, 255, 0.6);
+}
+
+/* PRINT STYLES FOR CRISP A4 PDF */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .app-navbar, .floating-action-bar, .reading-progress-track, .btn, .btn-sign-inline, .sig-placeholder button {
+    display: none !important;
+  }
+  .contract-view-wrapper {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .contract-doc {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .parties-grid, .doc-header, .doc-conclusion {
+    page-break-inside: avoid !important;
+  }
+}

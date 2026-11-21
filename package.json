@@ -1,0 +1,25 @@
+{
+  "name": "vers-study-online-contract",
+  "version": "1.0.0",
+  "description": "VERS STUDY - Ta'lim xizmatlarini ko'rsatish shartnomasi onlayn platformasi",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve . -p 3000",
+    "dev": "vercel dev"
+  },
+  "keywords": [
+    "contract",
+    "education",
+    "signature",
+    "pdf",
+    "vers-study"
+  ],
+  "author": "VERS STUDY",
+  "license": "MIT",
+  "dependencies": {
+    "formidable": "^3.5.2"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

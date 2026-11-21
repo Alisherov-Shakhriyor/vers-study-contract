@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80" fill="none">
+  <defs>
+    <linearGradient id="versGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7C5CFC"/>
+      <stop offset="100%" stop-color="#4F2CF5"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#111114"/>
+      <stop offset="100%" stop-color="#2D2254"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon -->
+  <rect x="8" y="12" width="56" height="56" rx="16" fill="url(#versGrad)"/>
+  <path d="M22 26L36 54L50 26" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="36" cy="38" r="3.5" fill="#FFE600"/>
+
+  <!-- Brand Name -->
+  <text x="76" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="900" letter-spacing="1.5" fill="url(#textGrad)">VERS STUDY</text>
+  <text x="77" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="3" fill="#7C5CFC">EDUCATION CENTER</text>
+</svg>

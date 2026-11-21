@@ -1,0 +1,176 @@
+/* ==========================================================================
+   VERS STUDY — SIGNATURE MODAL & CANVAS STYLES
+   ========================================================================== */
+
+.signature-modal-dialog {
+  background-color: var(--surface-color);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 580px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.sig-modal-header {
+  padding: 18px 24px;
+  background-color: #FAFAFC;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sig-modal-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sig-modal-body {
+  padding: 24px;
+}
+
+.sig-instructions {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+/* Canvas Container */
+.canvas-holder {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-color: #FFFFFF;
+  border: 2px dashed #C5BFF0;
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.canvas-holder:focus-within {
+  border-color: var(--accent-color);
+  border-style: solid;
+}
+
+#signatureCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* Muhim: mobil qurilmalarda scroll to'xtaydi */
+  display: block;
+}
+
+.canvas-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  color: #DDD8EB;
+  font-size: 14px;
+  font-weight: 600;
+  user-select: none;
+  text-align: center;
+  z-index: 1;
+}
+
+.sig-pen-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.pen-color-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #0F2B66;
+  margin-right: 4px;
+}
+
+.sig-legal-disclaimer {
+  font-size: 11.5px;
+  color: #8C879B;
+  margin-top: 14px;
+  line-height: 1.45;
+  background-color: #F8F7FC;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.sig-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-color);
+  background-color: #FAFAFC;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Loading & Processing overlay */
+.processing-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 17, 20, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.processing-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.spinner {
+  width: 54px;
+  height: 54px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.proc-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.proc-status-text {
+  font-size: 14.5px;
+  color: #D3CCE8;
+}
